@@ -2,7 +2,7 @@ import os
 import subprocess
 import time
 from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 import requests
 
 # تنظیمات هاردکد
@@ -170,7 +170,7 @@ async def verify_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 def main():
-    application = Application.builder().token(TELEGRAM_TOKEN).build()
+    application = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("sign", sign_command))
